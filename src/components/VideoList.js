@@ -1,7 +1,20 @@
 import React from "react";
 import VideoItem from "./VideoItem";
+import VideoListPlaceholder from "./VideoListPlaceholder";
 
 const VideoList = ({ videos, onVideoSelect }) => {
+	if (videos.length === 0) {
+		return (
+			<div>
+				<VideoListPlaceholder />
+				<VideoListPlaceholder />
+				<VideoListPlaceholder />
+				<VideoListPlaceholder />
+				<VideoListPlaceholder />
+			</div>
+		);
+	}
+
 	const renderedList = videos.map((video) => {
 		return (
 			<VideoItem
@@ -12,7 +25,7 @@ const VideoList = ({ videos, onVideoSelect }) => {
 		);
 	});
 
-	return <div className="ui relaxed items">{renderedList}</div>;
+	return <div className="ui relaxed divided list">{renderedList}</div>;
 };
 
 export default VideoList;
